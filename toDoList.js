@@ -1,18 +1,24 @@
+// Body style
+
+document.body.className = "d-flex justify-content-center bg-success";
+
 // Body
 
 const body = document.querySelector(".warpper");
+body.className = "bg-light p-3 rounded w-50";
 
 // Heading
 
 const todoTitle = document.createElement("h1");
 todoTitle.innerHTML = "Todo List";
-
+todoTitle.className = "fw-bold";
 body.append(todoTitle);
 
 // Unorder List
 
 const todoUnorderList = document.createElement("ul");
 todoUnorderList.id = "todoList";
+todoUnorderList.className = "my-4 mx-4";
 
 body.append(todoUnorderList);
 
@@ -35,7 +41,7 @@ const loadButtons = () => {
   liList.forEach((element) => {
     const deleteButton = document.createElement("button");
     deleteButton.innerHTML = "DELETE";
-    deleteButton.className = "deleteButton red";
+    deleteButton.className = "deleteButton btn btn-danger float-end ms-1";
     element.append(deleteButton);
   });
   const deleteButtons = document.querySelectorAll(".deleteButton");
@@ -46,7 +52,7 @@ const loadButtons = () => {
   liList.forEach((element) => {
     const updateButton = document.createElement("button");
     updateButton.innerHTML = "UPDATE";
-    updateButton.className = "updateButton green";
+    updateButton.className = "updateButton btn btn-warning float-end";
     element.append(updateButton);
   });
   const updateButtons = document.querySelectorAll(".updateButton");
@@ -64,6 +70,7 @@ const renderList = () => {
     const li = document.createElement("li");
     li.innerHTML = element;
     li.id = `li${index}`;
+    li.className = "m-2 fs-4";
     toDOList.append(li);
   });
   loadButtons();
@@ -121,14 +128,19 @@ renderList();
 
 // input and add button
 
+const inputGroup = document.createElement("div");
+inputGroup.className = "d-flex";
+body.append(inputGroup);
+
 const input = document.createElement("input");
-body.append(input);
+inputGroup.append(input);
+input.className = "input-group-text ms-4";
 
 const button = document.createElement("button");
 button.innerHTML = "ADD";
 button.id = "addButton";
-button.className = "blue";
-body.append(button);
+button.className = "btn btn-primary ms-3";
+inputGroup.append(button);
 
 // add button functionality
 
