@@ -18,7 +18,14 @@ body.append(todoUnorderList);
 
 // toDos Array
 
-let toDos = ["wake up", "eat breakfast", "code"];
+let toDos = [];
+let retrievedData = JSON.parse(localStorage.getItem("toDosArray"));
+
+if (!retrievedData) {
+  toDos = ["wake up", "eat breakfast", "code"];
+} else {
+  toDos = retrievedData;
+}
 
 // load buttons function
 
@@ -60,6 +67,7 @@ const renderList = () => {
     toDOList.append(li);
   });
   loadButtons();
+  localStorage.setItem("toDosArray", JSON.stringify(toDos));
 };
 
 // addToList function
@@ -119,7 +127,7 @@ body.append(input);
 const button = document.createElement("button");
 button.innerHTML = "ADD";
 button.id = "addButton";
-button.className = 'blue';
+button.className = "blue";
 body.append(button);
 
 // add button functionality
